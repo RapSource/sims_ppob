@@ -20,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.alternate_email),
-                hintText: 'masukkan email anda',
+                hintText: 'masukan email anda',
               ),
             ),
             TextField(
@@ -69,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                 ),
-                hintText: 'masukkan password anda',
+                hintText: 'masukan password anda',
               ),
             ),
             MaterialButton(

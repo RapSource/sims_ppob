@@ -53,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.alternate_email),
-                hintText: 'masukkan email anda',
+                hintText: 'masukan email anda',
               ),
             ),
             TextField(
