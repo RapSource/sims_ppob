@@ -19,13 +19,13 @@ class _TransactionPageState extends State<TransactionPage> {
           leading: Row(
             children: [
               IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back,
                     size: 25.0,
                     color: Colors.black,
                   ),
                   onPressed: () => Navigator.of(context).pop()),
-              Text('Kembali',
+              const Text('Kembali',
                   style: TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.w500,
@@ -34,7 +34,7 @@ class _TransactionPageState extends State<TransactionPage> {
           ),
           title: Container(
             margin: const EdgeInsets.only(left: 45),
-            child: Text('Transaksi',
+            child: const Text('Transaksi',
                 style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.black,
@@ -51,21 +51,21 @@ class _TransactionPageState extends State<TransactionPage> {
                 height: 120,
                 decoration: BoxDecoration(
                     color: Colors.red, borderRadius: BorderRadius.circular(15)),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Saldo Anda',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Row(children: [
-                      const Text('Rp',
+                      Text('Rp',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 30.0,
                               fontWeight: FontWeight.w600)),
-                      const SizedBox(width: 5),
+                      SizedBox(width: 5),
                       Text('10.000',
                           style: TextStyle(
                               color: Colors.white,
@@ -93,7 +93,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -103,7 +103,6 @@ class _TransactionPageState extends State<TransactionPage> {
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text('Top Up Saldo')
                             ],
                           ),
                           Text(
@@ -124,7 +123,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -155,7 +154,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -186,7 +185,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -217,7 +216,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(

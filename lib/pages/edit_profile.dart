@@ -52,7 +52,7 @@ class _EditProfilePage extends State<EditProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 130,
                   width: 150,
                   child: Stack(children: [
@@ -69,19 +69,19 @@ class _EditProfilePage extends State<EditProfilePage> {
                               color: Colors.grey[300],
                               border: Border.all(width: 1, color: Colors.grey),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(50))),
+                                  const BorderRadius.all(Radius.circular(50))),
                           child: IconButton(
                               onPressed: () {},
                               iconSize: 20,
-                              icon: Icon(Icons.edit))),
+                              icon: const Icon(Icons.edit))),
                     )
                   ]),
                 ),
               ),
-              Center(
+              const Center(
                 child: Text('Aditya Pratama',
                     // '${provider.profile?.data?.firstName ?? ''} ${provider.profile?.data?.lastName ?? ''}',
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 25, fontWeight: FontWeight.bold)),
               ),
               const SizedBox(height: 30),
@@ -134,7 +134,7 @@ class _EditProfilePage extends State<EditProfilePage> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll<Color>(Colors.red),
                   ),
@@ -155,7 +155,7 @@ class _EditProfilePage extends State<EditProfilePage> {
                     _namaDepanController.clear();
                     _namaBelakangController.clear();
                   },
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll<Color>(Colors.white),
                   ),

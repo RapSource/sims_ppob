@@ -53,7 +53,7 @@ class _AccountPageState extends State<AccountPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 130,
                   width: 150,
                   child: Stack(children: [

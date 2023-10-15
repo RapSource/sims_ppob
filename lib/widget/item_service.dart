@@ -11,7 +11,7 @@ class ItemServices extends StatelessWidget {
     return Column(
       children: [
         Image.network(service.serviceIcon ?? ''),
-        Text(service.serviceName?.split(' ').first ?? ''),
+        Text(service.serviceName?.split(' ').first ?? '', style: TextStyle(fontSize: 12),),
       ],
     );
   }
