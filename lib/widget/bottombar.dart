@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sims_ppob_adityapratama/pages/akun.dart';
+import 'package:sims_ppob_adityapratama/pages/account.dart';
 import 'package:sims_ppob_adityapratama/pages/home.dart';
-import 'package:sims_ppob_adityapratama/pages/top_up.dart';
+import 'package:sims_ppob_adityapratama/pages/topup.dart';
 import 'package:sims_ppob_adityapratama/pages/transaction.dart';
 
 class BottomNavBar extends StatefulWidget {

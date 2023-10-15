@@ -67,13 +67,13 @@ class _TopupPageState extends State<TopupPage> {
           leading: Row(
             children: [
               IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back,
                     size: 25.0,
                     color: Colors.black,
                   ),
                   onPressed: () => Navigator.of(context).pop()),
-              Text('Kembali',
+              const Text('Kembali',
                   style: TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.w500,
@@ -82,7 +82,7 @@ class _TopupPageState extends State<TopupPage> {
           ),
           title: Container(
             margin: const EdgeInsets.only(left: 50),
-            child: Text('Top Up',
+            child: const Text('Top Up',
                 style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.black,

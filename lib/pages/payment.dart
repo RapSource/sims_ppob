@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PemmbayaranPage extends StatefulWidget {
-  const PemmbayaranPage({super.key});
+class PaymentPage extends StatefulWidget {
+  const PaymentPage({super.key});
 
   @override
-  State<PemmbayaranPage> createState() => _PemmbayaranPageState();
+  State<PaymentPage> createState() => _PaymentPageState();
 }
 
-class _PemmbayaranPageState extends State<PemmbayaranPage> {
+class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,13 +92,13 @@ class _PemmbayaranPageState extends State<PemmbayaranPage> {
             ),
             const SizedBox(height: 25),
             TextField(
-                // controller: _nominalController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.money),
-                ),
+              // controller: _nominalController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.money),
               ),
+            ),
             const SizedBox(height: 200),
             MaterialButton(
               color: Colors.red,

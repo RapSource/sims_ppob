@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:readmore/readmore.dart';
 
 class TransactionPage extends StatefulWidget {
   const TransactionPage({super.key});
