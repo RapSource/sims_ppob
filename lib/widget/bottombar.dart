@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sims_ppob_adityapratama/pages/account.dart';
+import 'package:sims_ppob_adityapratama/pages/profile.dart';
 import 'package:sims_ppob_adityapratama/pages/home.dart';
 import 'package:sims_ppob_adityapratama/pages/topup.dart';
 import 'package:sims_ppob_adityapratama/pages/transaction.dart';

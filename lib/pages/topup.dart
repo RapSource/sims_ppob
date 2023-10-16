@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sims_ppob_adityapratama/provider/topup_notifier.dart';
 
 class TopupPage extends StatefulWidget {
   const TopupPage({super.key});
@@ -15,6 +17,7 @@ class _TopupPageState extends State<TopupPage> {
   void initState() {
     super.initState();
     _nominalController.addListener(_checkInput);
+    Provider.of<TopUpNotifier>(context, listen: false).getBalance();
   }
 
   void _checkInput() {
@@ -88,99 +91,112 @@ class _TopupPageState extends State<TopupPage> {
                     color: Colors.black,
                     fontWeight: FontWeight.bold)),
           )),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 24.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(20),
-                height: 120,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(15)),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Saldo Anda',
-                      style: TextStyle(color: Colors.white, fontSize: 18.0),
-                    ),
-                    SizedBox(height: 10),
-                    Row(children: [
-                      Text('Rp',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600)),
-                      SizedBox(width: 5),
-                      Text('0',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600)),
-                    ]),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 30),
-              const Text('Silahkan masukan', style: TextStyle(fontSize: 22)),
-              const Text('Nominal Top Up',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 30),
-              TextField(
-                controller: _nominalController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.money),
-                  hintText: 'masukan nominal Top Up',
-                ),
-              ),
-              const SizedBox(height: 30),
-              Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    pilihanNominalTersedia(10000),
-                    pilihanNominalTersedia(20000),
-                    pilihanNominalTersedia(50000),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    pilihanNominalTersedia(100000),
-                    pilihanNominalTersedia(250000),
-                    pilihanNominalTersedia(500000),
-                  ],
-                ),
-              ]),
-              const SizedBox(height: 50),
-              isButtonDisabled
-                  ? MaterialButton(
-                      color: Colors.grey[300],
-                      textTheme: ButtonTextTheme.primary,
-                      height: 50,
-                      onPressed: () {},
-                      child: const Text(
-                        'Top Up',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    )
-                  : MaterialButton(
+      body: Consumer<TopUpNotifier>(builder: (context, provider, child) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 24.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  height: 120,
+                  decoration: BoxDecoration(
                       color: Colors.red,
-                      textTheme: ButtonTextTheme.primary,
-                      height: 50,
-                      onPressed: () {},
-                      child: const Text('Top Up'),
-                    )
-            ],
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Saldo Anda',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(children: [
+                        const Text('Rp',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.w600)),
+                        const SizedBox(width: 5),
+                        Text(provider.balance?.data?.balance.toString() ?? '0',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.w600)),
+                      ]),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+                const Text('Silahkan masukan', style: TextStyle(fontSize: 22)),
+                const Text('Nominal Top Up',
+                    style:
+                        TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 30),
+                TextField(
+                  controller: _nominalController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.money),
+                    hintText: 'masukan nominal Top Up',
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      pilihanNominalTersedia(10000),
+                      pilihanNominalTersedia(20000),
+                      pilihanNominalTersedia(50000),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      pilihanNominalTersedia(100000),
+                      pilihanNominalTersedia(250000),
+                      pilihanNominalTersedia(500000),
+                    ],
+                  ),
+                ]),
+                const SizedBox(height: 50),
+                isButtonDisabled
+                    ? MaterialButton(
+                        color: Colors.grey[300],
+                        textTheme: ButtonTextTheme.primary,
+                        height: 50,
+                        onPressed: () {},
+                        child: const Text(
+                          'Top Up',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    : MaterialButton(
+                        color: Colors.red,
+                        textTheme: ButtonTextTheme.primary,
+                        height: 50,
+                        onPressed: () async {
+                          await provider.topUp(
+                              amount: int.parse(_nominalController.text));
+                          if (provider.message.isNotEmpty) {
+                            final snackbar =
+                                SnackBar(content: Text(provider.message));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar);
+                          }
+                        },
+                        child: const Text('Top Up'),
+                      )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

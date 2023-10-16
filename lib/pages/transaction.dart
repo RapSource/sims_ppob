@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sims_ppob_adityapratama/provider/transaction_notifier.dart';
+import 'package:sims_ppob_adityapratama/widget/item_history.dart';
 
 class TransactionPage extends StatefulWidget {
   const TransactionPage({super.key});
@@ -8,6 +11,14 @@ class TransactionPage extends StatefulWidget {
 }
 
 class _TransactionPageState extends State<TransactionPage> {
+  @override
+  void initState() {
+    Provider.of<TransactionNotifier>(context, listen: false)
+        .getTransactionHistory();
+    Provider.of<TransactionNotifier>(context, listen: false).getBalance();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,207 +51,70 @@ class _TransactionPageState extends State<TransactionPage> {
                     color: Colors.black,
                     fontWeight: FontWeight.bold)),
           )),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(20),
-                height: 120,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(15)),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Saldo Anda',
-                      style: TextStyle(color: Colors.white, fontSize: 18.0),
-                    ),
-                    SizedBox(height: 10),
-                    Row(children: [
-                      Text('Rp',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600)),
-                      SizedBox(width: 5),
-                      Text('10.000',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600)),
-                    ]),
-                  ],
+      body: Consumer<TransactionNotifier>(builder: (context, provider, child) {
+        return SingleChildScrollView(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 30.0, horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  height: 120,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Saldo Anda',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                      SizedBox(height: 10),
+                      Row(children: [
+                        const Text('Rp',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.w600)),
+                        const SizedBox(width: 5),
+                        Text(provider.balance?.data!.balance.toString() ?? '0',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.w600)),
+                      ]),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 50),
-              const Text('Transaksi',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 0.5),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '+ Rp.10.000',
-                                style: TextStyle(
-                                    color: Colors.cyan,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            '17 Agustus 2023 13.10 WIB',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        ]),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 0.5),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '- Rp.40.000',
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text('Pulsa Prabayar')
-                            ],
-                          ),
-                          Text(
-                            '17 Agustus 2023 13.10 WIB',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        ]),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 0.5),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '- Rp.10.000',
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text('Listrik Prabayar')
-                            ],
-                          ),
-                          Text(
-                            '17 Agustus 2023 13.10 WIB',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        ]),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 0.5),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '+ Rp.50.000',
-                                style: TextStyle(
-                                    color: Colors.cyan,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text('Top Up Saldo')
-                            ],
-                          ),
-                          Text(
-                            '17 Agustus 2023 13.10 WIB',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        ]),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 0.5),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '- Rp.10.000',
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text('Top Up Saldo')
-                            ],
-                          ),
-                          Text(
-                            '17 Agustus 2023 13.10 WIB',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        ]),
-                  ),
-                ],
-              ),
-            ],
+                const SizedBox(height: 50),
+                const Text('Transaksi',
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 20),
+                ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final history =
+                          provider.transactionHistory?.data?.records![index];
+                      return ItemHistory(history: history!);
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        height: 10,
+                      );
+                    },
+                    itemCount:
+                        provider.transactionHistory?.data?.records?.length ??
+                            0),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

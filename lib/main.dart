@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sims_ppob_adityapratama/pages/login.dart';
+import 'package:sims_ppob_adityapratama/provider/update_profile_notifier.dart';
 import 'package:sims_ppob_adityapratama/provider/home_notifier.dart';
 import 'package:sims_ppob_adityapratama/provider/register_notifier.dart';
+import 'package:sims_ppob_adityapratama/provider/topup_notifier.dart';
+import 'package:sims_ppob_adityapratama/provider/transaction_notifier.dart';
 import 'package:sims_ppob_adityapratama/utils/api_notifer.dart';
+
 import 'package:sims_ppob_adityapratama/widget/bottombar.dart';
 
 Future<void> main() async {
@@ -33,8 +37,13 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<RegisterNotifier>(
           create: (_) => RegisterNotifier(apiNotifier: ApiNotifier())),
       ChangeNotifierProvider<HomeNotifier>(
-          create: (_) => HomeNotifier(apiNotifier: ApiNotifier()))
-
+          create: (_) => HomeNotifier(apiNotifier: ApiNotifier())),
+      ChangeNotifierProvider<TopUpNotifier>(
+          create: (_) => TopUpNotifier(apiNotifier: ApiNotifier())),
+      ChangeNotifierProvider<TransactionNotifier>(
+          create: (_) => TransactionNotifier(apiNotifier: ApiNotifier())),
+      ChangeNotifierProvider<UpdateNotifier>(
+          create: (_) => UpdateNotifier(apiNotifier: ApiNotifier()))
     ], child: MaterialApp(home: home));
   }
 }
